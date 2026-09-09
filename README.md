@@ -1,25 +1,53 @@
-# WA-Radar-Server 
+# WA Radar Server
 
-سيرفر خلفي (Backend) يقوم بمراقبة الرسائل المحذوفة في واتساب وإعادة توجيهها فوراً إلى بوت تليجرام.
+A small self-hosted Node.js experiment that watches a WhatsApp Web session and can forward deleted-message events to a Telegram bot for the account operator.
 
-## التقنيات
+> **Authorized-use only.** Use this project only with WhatsApp accounts, devices, and conversations you are permitted to operate and monitor. Respect participant privacy, applicable law, and WhatsApp / Telegram platform terms. Do not use it for covert monitoring or to access another person's account.
+
+## Technology
+
 - Node.js
-- whatsapp-web.js
+- `whatsapp-web.js`
 - Puppeteer
 - Telegram Bot API
 
-## التشغيل
-1. قومي بتثبيت المتطلبات: `npm install`
-2. أضيفي ملف `.env` وضعي فيه `TG_TOKEN` و `TG_CHAT_ID`.
-3. شغلي السيرفر: `npm start`
-‏#
+## Local setup
 
+Install dependencies:
 
-‏This project is **Open Source** for developers to self-host and customize. 
+```bash
+npm install
+```
 
----
+Create a local `.env` file with your own Telegram bot configuration:
 
-# لغير المبرمجين (Non-Developers)
-لو مش مبرمج ومش عارف تشغل الكود، بنقدم لك الخدمة الجاهزة أونلاين 24 ساعة من غير ما تفتح كمبيوتر!
-للاشتراك وتفعيل الرادار الخاص بك في 5 دقائق، تواصل معنا عبر:
-‏- **TikTok DM:** [Https://www.tiktok.com/@saaamahmed?_r=1&_t=ZS-96suBkpeSAy
+```env
+TG_TOKEN=your_bot_token
+TG_CHAT_ID=your_chat_id
+```
+
+Do not commit the `.env` file or any session credentials.
+
+Start the server:
+
+```bash
+npm start
+```
+
+The WhatsApp Web session must be authenticated by the account owner/operator before the project can observe events available to that session.
+
+## Privacy and security notes
+
+- Deleted messages may still contain sensitive personal information; keep forwarded data private and minimize retention.
+- Never publish WhatsApp session files, Telegram bot tokens, chat IDs, QR-authentication data, or exported message content.
+- A Telegram bot destination should be controlled by the same authorized operator.
+- Review dependency and platform behavior before deploying the project to a persistent server.
+- This repository is a development experiment, not a compliance, archival, or forensic product.
+
+## Scope
+
+This repository is provided for self-hosted development and learning. It does not provide a hosted monitoring service and does not grant permission to monitor third-party accounts or conversations.
+
+## License
+
+Review the repository license and the licenses / terms of the upstream libraries and services before redistribution or deployment.
